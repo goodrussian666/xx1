@@ -21,4 +21,6 @@ jobs:
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt
+          cp ../i.json implementations.json
+          python run.py
 
