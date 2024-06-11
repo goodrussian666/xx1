@@ -32,7 +32,7 @@ jobs:
       - name: Logs
         if: always()
         run: |
-          ls
-          du -sk logs*
+          ls quic-interop-runner
+          du -sk quic-interop-runner/logs*
 
 
