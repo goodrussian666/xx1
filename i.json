@@ -1,0 +1,12 @@
+{
+  "quic-go": {
+    "image": "martenseemann/quic-go-interop:latest",
+    "url": "https://github.com/lucas-clemente/quic-go",
+    "role": "client"
+  },
+  "haproxy": {
+    "image": "haproxy-qns-libressl:local",
+    "url": "https://github.com/haproxy/haproxy",
+    "role": "server"
+  }
+}
