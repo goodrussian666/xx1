@@ -28,7 +28,27 @@ on:
         - v2
         - goodput
         - crosstraffic
-        
+
+      client:
+        type: choice
+        description: Choose client
+        options:
+        - quic-go
+        - ngtcp2
+        - mvfst
+        - quiche
+        - kwik
+        - picoquic
+        - aioquic     
+        - neqo
+        - msquic
+        - chrome
+        - xquic
+        - lsquic
+        - quinn
+        - s2n-quic
+        - go-x-net
+              
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -51,8 +71,7 @@ jobs:
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          cp ../i.json implementations.json
-          python run.py --debug -t ${{ github.event.inputs.testcase }}
+          python run.py --debug -t ${{ github.event.inputs.testcase }} -c ${{ github.event.inputs.client }} -s haproxy
 
       - name: Logs
         if: always()
