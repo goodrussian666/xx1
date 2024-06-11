@@ -11,8 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a multi-line script
+      - name: Build image
         run: |
           git clone -b libressl https://github.com/haproxytech/haproxy-qns
           docker build --no-cache -t haproxy-qns-libressl:local haproxy-qns
+
+      - name: Run
+        run: |
+          git clone https://github.com/quic-interop/quic-interop-runner
+          cd quic-interop-runner
+          pip install -r requirements.txt
 
