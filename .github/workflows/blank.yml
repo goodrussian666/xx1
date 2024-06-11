@@ -22,5 +22,5 @@ jobs:
           cd quic-interop-runner
           pip install -r requirements.txt
           cp ../i.json implementations.json
-          python run.py
+          python run.py --debug
 
