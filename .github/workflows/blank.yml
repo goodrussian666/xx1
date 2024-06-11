@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install packages
+      - name: Install tshark
         run: |
           sudo apt-get update
           sudo apt-get -y install tshark
@@ -64,14 +64,14 @@ jobs:
       - name: Build image
         run: |
           git clone -b libressl https://github.com/haproxytech/haproxy-qns
-          docker build --no-cache -t haproxy-qns-libressl:local haproxy-qns
+          docker build --no-cache -t haproxy-qns:libressl haproxy-qns
 
       - name: Run
         run: |
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py --debug -t ${{ github.event.inputs.testcase }} -c ${{ github.event.inputs.client }} -s haproxy
+          python run.py --debug -r latest=libressl -t ${{ github.event.inputs.testcase }} -c ${{ github.event.inputs.client }} -s haproxy
 
       - name: Logs
         if: always()
