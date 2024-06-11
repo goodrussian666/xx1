@@ -14,7 +14,7 @@ jobs:
       - name: Install packages
         run: |
           sudo apt-get update
-           sudo apt-get -y install tshark
+          sudo apt-get -y install tshark
 
       - name: Build image
         run: |
@@ -32,8 +32,7 @@ jobs:
       - name: Logs
         if: always()
         run: |
-          ls | grep logs
-          ls logs*
+          ls
           du -sk logs*
 
 
