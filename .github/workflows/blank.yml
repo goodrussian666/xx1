@@ -25,7 +25,7 @@ jobs:
         run: |
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
-          pip install -r requirements.txt
+          pip install -r requirements.txt --break-system-packages
           cp ../i.json implementations.json
           python run.py --debug
 
