@@ -29,3 +29,11 @@ jobs:
           cp ../i.json implementations.json
           python run.py --debug
 
+      - name: Logs
+        if: always()
+        run: |
+          ls | grep logs
+          ls logs*
+          du -sk logs*
+
+
