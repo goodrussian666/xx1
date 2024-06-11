@@ -1,9 +1,35 @@
 name: CI
 
-on: [ push, pull_request, workflow_dispatch ]
-
+on: 
+  workflow_dispatch:
+    inputs:
+      testcase:
+        type: choice
+        description: Choose testcase
+        options:
+        - handshake
+        - transfer
+        - longrtt
+        - chacha20
+        - multiplexing
+        - retry
+        - resumption
+        - zerortt
+        - http3
+        - blackhole
+        - keyupdate
+        - ecn
+        - amplificationlimit
+        - handshakeloss 
+        - transferloss
+        - handshakecorruption
+        - transfercorruption
+        - ipv6
+        - v2
+        - goodput
+        - crosstraffic
+        
 jobs:
-  # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-24.04
@@ -27,7 +53,7 @@ jobs:
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
           cp ../i.json implementations.json
-          python run.py --debug
+          python run.py --debug -t ${{ github.event.inputs.testcase }}
 
       - name: Logs
         if: always()
