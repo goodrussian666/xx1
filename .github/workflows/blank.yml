@@ -63,7 +63,7 @@ jobs:
 
       - name: Pull image
         run: |
-          docker pull ghcr.io/goodrussian666/xx1:local
+          docker pull ghcr.io/${{ github.repository }}:local
 
       - name: Run
         run: |
@@ -74,8 +74,12 @@ jobs:
 
       - name: Logs
         if: always()
-        run: |
-          ls quic-interop-runner
-          du -sk quic-interop-runner/logs*
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: |
+            quic-interop-runner/logs*
+
+
 
 
