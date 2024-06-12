@@ -77,8 +77,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: logs
-          path: |
-            quic-interop-runner/logs
+          path: quic-interop-runner/logs/
+
 
 
 
