@@ -28,6 +28,6 @@ jobs:
         with:
           context: haproxy-qns
           push: true
-          tags: ghcr.io/chipitsine/haproxy-qns-libressl:local
+          tags: ghcr.io/${{ github.actor }}/${{ github.repository }}:local
           labels: lll
 
