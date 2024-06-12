@@ -1,5 +1,7 @@
 name: QUIC Interop
 
+run-name: Execute ${{ github.event.inputs.testcase }} on ${{ github.event.inputs.client }}
+
 on: 
   workflow_dispatch:
     inputs:
@@ -50,9 +52,9 @@ on:
         - go-x-net
               
 jobs:
-  build:
+  run:
     runs-on: ubuntu-24.04
-
+  
     steps:
       - uses: actions/checkout@v4
 
