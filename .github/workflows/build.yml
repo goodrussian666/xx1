@@ -1,0 +1,33 @@
+name: QUIC Interop Build img
+
+on: 
+  workflow_dispatch:
+              
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build image
+        run: |
+          git clone -b libressl https://github.com/haproxytech/haproxy-qns
+          ##docker build --no-cache -t haproxy-qns:libressl haproxy-qns
+
+      - name: Build and push Docker image
+        id: push
+        uses: docker/build-push-action@v5
+        with:
+          context: haproxy-qns
+          push: true
+          tags: ghcr.io/chipitsine/haproxy-qns-libressl:local
+          labels: lll
+
