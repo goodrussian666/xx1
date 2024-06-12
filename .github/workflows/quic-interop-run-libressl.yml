@@ -65,7 +65,7 @@ jobs:
 
       - name: Pull image
         run: |
-          docker pull ghcr.io/${{ github.repository }}:local
+          docker pull ghcr.io/${{ github.repository }}:libressl
 
       - name: Run
         run: |
