@@ -61,17 +61,16 @@ jobs:
           sudo apt-get update
           sudo apt-get -y install tshark
 
-      - name: Build image
+      - name: Pull image
         run: |
-          git clone -b libressl https://github.com/haproxytech/haproxy-qns
-          docker build --no-cache -t haproxy-qns:libressl haproxy-qns
+          docker pull ghcr.io/goodrussian666/xx1:local
 
       - name: Run
         run: |
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py --debug -r haproxy=haproxy-qns:libressl -t ${{ github.event.inputs.testcase }} -c ${{ github.event.inputs.client }} -s haproxy
+          python run.py --debug -r haproxy=ghcr.io/goodrussian666/xx1:local -t ${{ github.event.inputs.testcase }} -c ${{ github.event.inputs.client }} -s haproxy
 
       - name: Logs
         if: always()
