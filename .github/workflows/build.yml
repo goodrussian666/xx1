@@ -28,6 +28,6 @@ jobs:
         with:
           context: haproxy-qns
           push: true
-          tags: ghcr.io/${{ github.actor }}/${{ github.repository }}:local
+          tags: ghcr.io/${{ github.repository }}:local
           labels: lll
 
