@@ -1,6 +1,6 @@
 name: QUIC Interop run LibreSSL picoquic
 
-run-name: Run on ${{ suite.client }}
+run-name: Run on matric
 
 on: 
   workflow_dispatch:
