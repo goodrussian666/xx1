@@ -9,12 +9,10 @@ jobs:
   run:
     strategy:
       matrix:
-        suite: [ { client: picoquic, tests: handshake }, { client: ngtcp2,   tests: handshake } ]
-
-#        suite: [
-#          { client: picoquic, tests: "handshake,transfer,longrtt,multiplexing,retry,http3,blackhole,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,v2,goodput,crosstraffic" },
-#          { client: ngtcp2,   tests: "handshake,transfer,longrtt,multiplexing,retry,http3,blackhole,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,v2,goodput,crosstraffic" }
-#        ]
+        suite: [
+          { client: picoquic, tests: "handshake,transfer,longrtt,multiplexing,retry,http3,blackhole,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,v2,goodput,crosstraffic" },
+          { client: ngtcp2,   tests: "handshake,transfer,longrtt,multiplexing,retry,http3,blackhole,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,v2,goodput,crosstraffic" }
+        ]
   
     runs-on: ubuntu-24.04
   
