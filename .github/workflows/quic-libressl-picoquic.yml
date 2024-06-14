@@ -33,7 +33,7 @@ jobs:
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py -l logs -r haproxy=ghcr.io/${{ github.repository }}:libressl -t ${{ suite.tests }} -c ${{ suite.client }} -s haproxy
+          python run.py -l logs -r haproxy=ghcr.io/${{ github.repository }}:libressl -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s haproxy
 
 
 
