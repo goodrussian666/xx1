@@ -32,3 +32,10 @@ jobs:
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
           python run.py -l logs -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s nginx -r nginx=ghcr.io/${{ github.repository }}:angie-libressl
+
+      - name: Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: quic-interop-runner/logs/
