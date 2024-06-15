@@ -9,7 +9,7 @@ jobs:
       matrix:
         suite: [
           { client: quic-go, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" },
-          { client: picoquic, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }.
+          { client: picoquic, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" },
           { client: ngtcp2, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }
         ]
       fail-fast: false
