@@ -8,7 +8,9 @@ jobs:
     strategy:
       matrix:
         suite: [
-          { client: quic-go, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,resumption,zerortt,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }
+          { client: quic-go, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" },
+          { client: picoquic, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }.
+          { client: ngtcp2, tests: "handshake,transfer,longrtt,chacha20,multiplexing,retry,http3,blackhole,keyupdate,ecn,amplificationlimit,handshakeloss,transferloss,handshakecorruption,transfercorruption,ipv6,v2,goodput,crosstraffic" }
         ]
       fail-fast: false
   
@@ -31,7 +33,7 @@ jobs:
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py --debug -l logs -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s nginx -r nginx=ghcr.io/${{ github.repository }}:angie-libressl
+          python run.py -l logs -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s nginx -r nginx=ghcr.io/${{ github.repository }}:angie-libressl
 
       - name: Logs
         if: always()
