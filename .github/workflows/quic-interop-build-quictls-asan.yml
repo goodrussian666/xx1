@@ -1,4 +1,4 @@
-name: QUIC Interop Build img QuicTLS
+name: QUIC Interop Build img QuicTLS ASAN
 
 on: 
   workflow_dispatch:
