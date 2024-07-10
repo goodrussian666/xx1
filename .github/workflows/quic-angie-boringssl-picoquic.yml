@@ -24,14 +24,14 @@ jobs:
 
       - name: Pull image
         run: |
-          docker pull ghcr.io/${{ github.repository }}:angie-boringssl
+          docker pull ghcr.io/${{ github.repository }}:angie
 
       - name: Run
         run: |
           git clone https://github.com/quic-interop/quic-interop-runner
           cd quic-interop-runner
           pip install -r requirements.txt --break-system-packages
-          python run.py --debug -l logs -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s nginx -r nginx=ghcr.io/${{ github.repository }}:angie-boringssl
+          python run.py --debug -l logs -t ${{ matrix.suite.tests }} -c ${{ matrix.suite.client }} -s nginx -r nginx=ghcr.io/${{ github.repository }}:angie
 
       - name: Logs
         if: always()
